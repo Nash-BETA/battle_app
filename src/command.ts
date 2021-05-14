@@ -1,27 +1,21 @@
 import { prompt } from 'inquirer';
+import { CommandContent } from './commandContent';
 
-export abstract class CommandAbstract {
-  type: string;
-  name: string;
-  message: string;
-  choices: [];
-
-  constructor(type: string, name: string, message: string, choices: []) {
-    this.type = type;
-    this.name = name;
-    this.message = message;
-    this.choices = choices;
+export class Command {
+  public commandContent : CommandContent;
+  constructor(commandContent:CommandContent) {
+    this.commandContent = commandContent;
   }
 
-  select() {
-    const userInput = prompt([
+  select(): Promise<any> {
+    const commandSelect = prompt([
       {
-        type: this.type,
-        name: this.name,
-        message: this.message,
-        choices: this.choices,
+        type: this.commandContent.getType(),
+        name: this.commandContent.getName(),
+        message: this.commandContent.getMessage(),
+        choices: this.commandContent.getChoices(),
       },
     ]);
-    return userInput;
+    return commandSelect;
   }
 }
