@@ -10,12 +10,13 @@ export class main{
     }
 
     start() {
-        const command_select = new Command().action().then(value => {
+
+        const command_select = new Command('list', 'action', 'こうどうは？', [{ name: 'にげる', value: 'escape' }, { name: 'こうげき', value: 'battle'}]).select().then(value => {
             if (value.action == 'escape'){
                 console.log('プレイヤーとの戦いで逃げることはできない。');
                 return this.start();
             } else if (value.action == 'battle'){
-                const comand_battle = new Command().battle().then(value => {
+                const comand_battle = new Command('list', 'attac', 'なににする？', [{ name: 'たい', value: 'rash' }, { name: 'みず', value: 'wort' }]).select().then(value => {
                     console.log(value);
                     //IDからenumで技のインスタンスを取得
 

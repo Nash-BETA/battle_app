@@ -1,19 +1,23 @@
 import { prompt } from 'inquirer';
 
-export abstract class CommandAbstract {
+export class Command {
   type: string;
   name: string;
   message: string;
-  choices: [];
+  choices: {name: string;value: string;}[];
 
-  constructor(type: string, name: string, message: string, choices: []) {
+  constructor(type: string, name: string, message: string, choices: { name: string; value: string; }[]) {
     this.type = type;
     this.name = name;
     this.message = message;
     this.choices = choices;
   }
 
-  select() {
+  /**
+   *
+   * @returns
+   */
+  select(): Promise<any> {
     const userInput = prompt([
       {
         type: this.type,
