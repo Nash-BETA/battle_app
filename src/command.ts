@@ -1,16 +1,10 @@
 import { prompt } from 'inquirer';
+import { CommandContent } from './commandContent';
 
 export class Command {
-  type: string;
-  name: string;
-  message: string;
-  choices: {name: string;value: string;}[];
-
-  constructor(type: string, name: string, message: string, choices: { name: string; value: string; }[]) {
-    this.type = type;
-    this.name = name;
-    this.message = message;
-    this.choices = choices;
+  public commandContent : CommandContent;
+  constructor(commandContent:CommandContent) {
+    this.commandContent = commandContent;
   }
 
   /**
@@ -20,10 +14,10 @@ export class Command {
   select(): Promise<any> {
     const userInput = prompt([
       {
-        type: this.type,
-        name: this.name,
-        message: this.message,
-        choices: this.choices,
+        type: this.commandContent.getType(),
+        name: this.commandContent.getName(),
+        message: this.commandContent.getMessage(),
+        choices: this.commandContent.getChoices(),
       },
     ]);
     return userInput;
