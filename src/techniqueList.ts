@@ -1,7 +1,7 @@
-import { Technique } from "./technique";
+import { Technique } from "./technique/technique";
 
 /**
- * WonMonster - 所持モンスター
+ * TechniqueList - 技リスト
  */
 export class TechniqueList {
     monsterList:Technique[];

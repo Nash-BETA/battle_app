@@ -1,4 +1,4 @@
-import { Monster } from "./monster";
+import { MonsterAbstract } from "./monster/monsterAbstract";
 
 /**
  * 戦闘中のモンスター
