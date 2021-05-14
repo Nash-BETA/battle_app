@@ -1,13 +1,16 @@
+import { ActiveMonster } from './activeMonster';
 import { Command } from './command';
 import { CommandContent } from './commandContent';
-import { Monster } from './monster';
-
+import { WonMonster } from './wonMonster';
 export class main{
-    //ポケモンオブジェクト
-    public monster:Monster;
+    myMonster: WonMonster;
+    enemyMonster: WonMonster;
+    activeMonster:ActiveMonster;
 
-    constructor(monster:Monster){
-        this.monster = monster;
+    constructor(myMonster: WonMonster, enemyMonster:WonMonster){
+        this.myMonster    = myMonster;
+        this.enemyMonster = enemyMonster;
+        this.activeMonster = new ActiveMonster(this.myMonster.getMonster(), this.enemyMonster.getMonster());
     }
 
     start() {
@@ -17,13 +20,13 @@ export class main{
                 console.log('プレイヤーとの戦いで逃げることはできない。');
                 return this.start();
             } else if (value.action == 'battle'){
-                let battleCommand:CommandContent = new CommandContent('list', 'attac', 'なににする？', [{ name: 'たい', value: 'rash' }, { name: 'みず', value: 'wort' }]);
+                let turn_monster = this.activeMonster.getTurn();
+                let battleCommand: CommandContent = new CommandContent('list', 'attac', 'なににする？', turn_monster.techniqueList());
                 new Command(battleCommand).select().then(value => {
                     console.log(value);
                     //IDからenumで技のインスタンスを取得
 
                     //ダメージ計算インスタンスに仕事を渡す。
-
 
                 });
             }

@@ -7,12 +7,8 @@ export class Command {
     this.commandContent = commandContent;
   }
 
-  /**
-   *
-   * @returns
-   */
   select(): Promise<any> {
-    const userInput = prompt([
+    const commandSelect = prompt([
       {
         type: this.commandContent.getType(),
         name: this.commandContent.getName(),
@@ -20,6 +16,6 @@ export class Command {
         choices: this.commandContent.getChoices(),
       },
     ]);
-    return userInput;
+    return commandSelect;
   }
 }
