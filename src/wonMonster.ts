@@ -1,4 +1,4 @@
-import { Monster } from "./monster";
+import { Monster } from "./monster/monster";
 
 /**
  * WonMonster - 所持モンスター
