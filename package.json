@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "author": "Nash-BETA @Nash-BETA",
   "bin": {
-    "mons": "./bin/run"
+    "mons": "bin/run"
   },
   "bugs": "https://github.com/Nash-BETA/mons/issues",
   "dependencies": {
