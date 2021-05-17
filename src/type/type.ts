@@ -1,5 +1,4 @@
 enum Type{
-
     NOMAL,
     FIRE
 }

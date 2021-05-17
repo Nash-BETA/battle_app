@@ -1,0 +1,50 @@
+@startuml TwiitDisplay
+
+class RunCommand{
+    + run()
+}
+class Main{
+    + start()
+}
+
+class WonMonster{
+    + monsterList:Monster[]
+    + getMonster():Monster
+}
+
+interface Monster <<interface>>{
+    + name:string
+    + hitPoint:number
+    + technique: TechniqueList
+}
+class FushigidaneMonster {
+}
+class ActiveMonster{
+}
+abstract class CommandAbstract{
+}
+
+class CommandAction{
+}
+class CommandButtole{
+}
+class Technique{
+}
+class TechniqueTackle{
+}
+
+
+Main --> RunCommand
+WonMonster --> Main
+CommandAbstract --> Main
+ActiveMonster --> Main
+Monster --> Damage
+WonMonster "1" o-- "1..*" Monster
+Monster  <|.. FushigidaneMonster : 実現
+CommandAbstract <|-- CommandAction :汎化
+CommandAbstract <|-- CommandButtole :汎化
+Technique  <|.. TechniqueTackle : 実現
+Monster <|.. TechniqueList :依存
+TechniqueList "1" o-- "1..*" Technique
+CommandButtole <-- Monster
+@enduml

@@ -1,19 +1,13 @@
 import { Command } from '@oclif/command';
-import { main } from './main';
-import { FushigidaneMonster } from './monster/fushigidaneMonster';
-import { WonMonster } from './wonMonster';
+import { Main } from './main';
 
 
 
-class SampleCommand extends Command {
+class RunCommand extends Command {
   //実行コマンド
   async run() {
-//    const technique_test = new TechniqueList([new Technique('たいあたり','ふつう',20)]);
-    const ownMonster = new WonMonster([new FushigidaneMonster()]);
-    const enemyMonster = new WonMonster([new FushigidaneMonster()]);
-
-    const main_class = new main(ownMonster,enemyMonster);
+    const main_class = new Main();
     main_class.start();
   }
 }
-export = SampleCommand;
+export = RunCommand;

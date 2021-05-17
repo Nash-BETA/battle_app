@@ -1,6 +1,9 @@
 mons
 ====
 
+## コマンドラインで下記を実行
 $ npm install
-$ mons COMMAND
-running command...
+$ ./bin/run
+
+## クラス図
+Alt + d
