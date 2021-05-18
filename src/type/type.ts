@@ -1,6 +1,8 @@
 enum Type{
     NOMAL,
-    FIRE
+    FIRE,
+    GRASS,
+    WATER
 }
 
 namespace Type{
@@ -10,8 +12,15 @@ namespace Type{
                 return 'normal';
             case Type.FIRE:
                 return 'fire';
+            case Type.GRASS:
+                return 'grass';
+            case Type.WATER:
+                return 'water';
             default:
                 return '詳細不明';
         }
     }
+}
+export {
+    Type,
 }

@@ -39,12 +39,26 @@ WonMonster --> Main
 CommandAbstract --> Main
 ActiveMonster --> Main
 Monster --> Damage
+Damage --> Main
 WonMonster "1" o-- "1..*" Monster
+
+TechniqueList "1" o-- "1..*" Technique
+
+Monster <|.. TechniqueList :依存
+
 Monster  <|.. FushigidaneMonster : 実現
+Monster  <|.. HitokageMonster : 実現
+Monster  <|.. MizugameMonster : 実現
+
+
 CommandAbstract <|-- CommandAction :汎化
 CommandAbstract <|-- CommandButtole :汎化
-Technique  <|.. TechniqueTackle : 実現
-Monster <|.. TechniqueList :依存
-TechniqueList "1" o-- "1..*" Technique
 CommandButtole <-- Monster
+
+Technique  <|.. TechniqueTackle : 実現
+Technique  <|.. techniqueHinoko : 実現
+Technique  <|.. techniqueVineWhip : 実現
+Technique  <|.. techniqueWaterGun : 実現
+
+
 @enduml

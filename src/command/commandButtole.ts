@@ -16,7 +16,7 @@ export class CommandButtole extends commandAbstract  {
         let returnData: { name: string; value: Technique }[] = [];
         for (technique of techniqueList) {
             let list = {
-                'name': technique.getTechniqueName(),
+                'name': technique.technique_name,
                 'value': technique
             };
             returnData.push(list);

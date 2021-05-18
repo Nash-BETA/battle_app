@@ -4,12 +4,12 @@ import { Technique } from "./technique/technique";
  * TechniqueList - 技リスト
  */
 export class TechniqueList {
-    monsterList:Technique[];
+    monsterTechiqueList:Technique[];
     constructor(technique: Technique[]){
-        this.monsterList = technique;
+        this.monsterTechiqueList = technique;
     }
 
     getTechniqueList(): Technique[]{
-        return this.monsterList;
+        return this.monsterTechiqueList;
     }
 }

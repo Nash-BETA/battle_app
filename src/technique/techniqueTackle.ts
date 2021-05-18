@@ -1,11 +1,8 @@
 import { Technique } from "./technique";
+import { Type } from "../type/type";
 
 export class TechniqueTackle implements Technique{
     technique_name:string = 'たいあたり';
-    type:string = 'ノーマル';
+    type: Type = Type.NOMAL;
     power:number = 20;
-
-    getTechniqueName(){
-        return this.technique_name;
-    }
 }

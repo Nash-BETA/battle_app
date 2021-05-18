@@ -18,6 +18,7 @@ export class Main{
     }
 
     start() {
+        const damege = new Damage();
         new CommandAction().select().then(value => {
             if (value.action == 'escape'){
                 console.log('プレイヤーとの戦いで逃げることはできない。');
@@ -25,12 +26,15 @@ export class Main{
             } else if (value.action == 'battle'){
                 let turn_monster = this.activeMonster.getTurn();
                 new CommandButtole(turn_monster).select().then(value => {
-                    console.log(value);
-                    new Damage(value, this.activeMonster.getNonTurn())
-                    //IDからenumで技のインスタンスを取得
-
-                    //ダメージ計算インスタンスに仕事を渡す。
-
+                    let damege_text = damege.damage(value.action, this.activeMonster.getNonTurn());
+                    console.log(damege_text);
+                    console.log('残りHP' + this.activeMonster.getNonTurn().hitPoint);
+                    //攻撃された側がHP０以下になった場合終了
+                    if (this.activeMonster.getNonTurn().hitPoint <= 0){
+                        return;
+                    }else{
+                        this.start();
+                    }
                 });
             }
         });

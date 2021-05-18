@@ -2,15 +2,10 @@ import { Monster } from "./monster/monster";
 import { Technique } from "./technique/technique";
 
 export class Damage{
-    technique:Technique;
-    monster:Monster;
-    constructor(technique: Technique, monster:Monster){
-        this.technique = technique;
-        this.monster   = monster;
-    }
 
-    damage(){
-
+    damage(technique: Technique, monster: Monster):string{
+        monster.hitPoint = monster.hitPoint - technique.power
+        return technique.power + 'のダメージ';
     }
 
     type(){

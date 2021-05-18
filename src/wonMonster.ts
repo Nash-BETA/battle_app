@@ -9,6 +9,11 @@ export class WonMonster {
         this.monsterList = monster;
     }
 
+    /**
+     * getMonster - ポケモンの入れ替え用
+     * @param id
+     * @returns
+     */
     getMonster(id:null|number = null):Monster{
         //戦闘開始時は先頭のモンスターを返す
         if(id === null){

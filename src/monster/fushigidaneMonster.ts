@@ -1,18 +1,13 @@
+import { Monster } from "./monster";
 import { TechniqueList } from "../techniqueList";
 import { TechniqueTackle } from "../technique/techniqueTackle";
-import { Monster } from "./monster";
+import { TechniqueVineWhip } from "../technique/techniqueVineWhip";
 
 /**
  * モンスター
  */
 export class FushigidaneMonster implements Monster{
-    name:string;
-    hitPoint:number;
-    technique:TechniqueList;
-
-    constructor() {
-        this.name = 'フシギダネ';
-        this.hitPoint = 100;
-        this.technique = new TechniqueList([new TechniqueTackle()]);
-    }
+    name = 'フシギダネ';
+    hitPoint = 100;
+    technique = new TechniqueList([new TechniqueTackle(), new TechniqueVineWhip()]);
 }
