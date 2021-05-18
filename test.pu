@@ -1,55 +1,41 @@
 @startuml TwiitDisplay
 
-class RunCommand{
-    + run()
-}
-class Main{
-    + start()
-}
-
-class WonMonster{
-    + monsterList:Monster[]
-    + getMonster():Monster
+class ActivePlayer{
+    + activePlayer:Player;
+    + nonActivePlayer: Player;
+    + getActivePlayer():Player     アクティブのプレイヤーを返す
+    + getNonActivePlayer():Player  アクティブでないプレイヤーを返す
+    + setChangeActivePlayer():void アクティブを切り替える
 }
 
-interface Monster <<interface>>{
-    + name:string
-    + hitPoint:number
-    + technique: TechniqueList
-}
-class FushigidaneMonster {
-}
-class ActiveMonster{
-}
-abstract class CommandAbstract{
+class Player{
+    + playerName:string;
+    + activeMonster:Monster;
+    + monsterList:Monster[];
+    + getActiveMonster():Monster          戦闘中のモンスターを返す
+    + setChangeMonster(id:number):Monster 戦闘中のモンスターを切り替える
 }
 
-class CommandAction{
-}
-class CommandButtole{
-}
-class Technique{
-}
-class TechniqueTackle{
-}
+Main -- RunCommand
+CommandAbstract -- Main
+Damage -- Main
+ActivePlayer -- Main
 
-
-Main --> RunCommand
-WonMonster --> Main
-CommandAbstract --> Main
-ActiveMonster --> Main
 Monster --> Damage
-Damage --> Main
-WonMonster "1" o-- "1..*" Monster
+Technique --> Technique
+
+Player "1" o-- "1..*" Monster
 
 TechniqueList "1" o-- "1..*" Technique
 
+ActivePlayer <|.. Player :依存
+
 Monster <|.. TechniqueList :依存
+Monster <|.. Type :依存
 
 Monster  <|.. FushigidaneMonster : 実現
 Monster  <|.. HitokageMonster : 実現
 Monster  <|.. MizugameMonster : 実現
-
 
 CommandAbstract <|-- CommandAction :汎化
 CommandAbstract <|-- CommandButtole :汎化
@@ -59,6 +45,11 @@ Technique  <|.. TechniqueTackle : 実現
 Technique  <|.. techniqueHinoko : 実現
 Technique  <|.. techniqueVineWhip : 実現
 Technique  <|.. techniqueWaterGun : 実現
+
+Type <|.. TypeFire : 実現
+Type <|.. TypeWater : 実現
+Type <|.. TypeGrass : 実現
+Type <|.. TypeNomal : 実現
 
 
 @enduml
