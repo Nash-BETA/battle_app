@@ -6,9 +6,9 @@ export class TypeFire implements Type {
 
     judgeCompatibility(techniqueType:Type):number{
         if (techniqueType instanceof TypeGrass){
-            return 2;
-        } else if (techniqueType instanceof TypeWater){
             return 0.5;
+        } else if (techniqueType instanceof TypeWater){
+            return 2;
         }
         return 1;
     }

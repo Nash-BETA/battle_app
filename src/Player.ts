@@ -1,37 +1,42 @@
+//https://typescript-jp.gitbook.io/deep-dive/recap/equality(構造の等価性)
+import * as deepEqual from "fast-deep-equal";
 import { Monster } from "./monster/monster";
 
 /**
  * Player - 所持モンスター
  */
 export class Player {
-    playerName:string;
-    activeMonster:Monster;
-    monsterList:Monster[];
-    constructor(playerName:string,monster:Monster[]){
+    private playerName:string;
+    private monsterList:Monster[];
+    public activeMonster:Monster;
+    constructor(playerName: string, monster: Monster[]) {
         this.playerName = playerName;
-        this.monsterList = monster;
         this.activeMonster = monster[0];
+        this.monsterList = monster;
+    }
+
+    getPlayerName(): string {
+        return this.playerName;
     }
 
     getActiveMonster(): Monster{
         return this.activeMonster;
     }
 
-    getWaitMonster(activeMonster:Monster|null):Monster[]{
+    getWaitMonster(activeMonster:Monster|null = null):Monster[]{
         let waitMonster:Monster;
         let returnMonsterData:Monster[] = [];
         for (waitMonster of this.monsterList ){
             //同じポケモンは入れ替えられない&&ヒットポイントが０より上であること
-            if (activeMonster == waitMonster && activeMonster.getHitPoint() > 0) {
+            if (deepEqual(activeMonster, waitMonster) || waitMonster.getHitPoint() <= 0) {
                 continue;
             }
             returnMonsterData.push(waitMonster)
         }
-
-        return this.monsterList
+        return returnMonsterData
     }
 
-    setChangeMonster(id:number):Monster{
-        return this.activeMonster = this.monsterList[id]
+    setChangeMonster(changeMonster: Monster):void{
+        this.activeMonster = changeMonster;
     }
 }

@@ -9,6 +9,6 @@
     "target": "es2017"
   },
   "include": [
-    "src/**/*"
-, "../command copy.ts"  ]
+    "src/**/*",
+    "../index.ts"  ]
 }

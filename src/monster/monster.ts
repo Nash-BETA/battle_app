@@ -10,6 +10,10 @@ export abstract class Monster {
     protected abstract hitPoint:number;
     protected abstract technique: Technique[];
 
+    getName(){
+        return this.name;
+    }
+
     getHitPoint(){
         return this.hitPoint;
     }

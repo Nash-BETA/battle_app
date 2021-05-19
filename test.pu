@@ -1,39 +1,21 @@
 @startuml TwiitDisplay
 
-class ActivePlayer{
-    + activePlayer:Player;
-    + nonActivePlayer: Player;
-    + getActivePlayer():Player     アクティブのプレイヤーを返す
-    + getNonActivePlayer():Player  アクティブでないプレイヤーを返す
-    + setChangeActivePlayer():void アクティブを切り替える
-}
-
-class Player{
-    + playerName:string;
-    + activeMonster:Monster;
-    + monsterList:Monster[];
-    + getActiveMonster():Monster          戦闘中のモンスターを返す
-    + setChangeMonster(id:number):Monster 戦闘中のモンスターを切り替える
-}
-
 Main -- RunCommand
 CommandAbstract -- Main
 ActivePlayer -- Main
 
-ActivePlayer "1" o-- "2" ActivePlayer :集約
 
+ActivePlayer "1" o-- "2" Player :集約
 Player "1" o-- "1..*" Monster :集約
+Monster "1" o-- "1..*" Technique :集約
+Monster "1" o-- "1" Type :集約
 
 CommandAbstract <|-- CommandAction :汎化
 CommandAbstract <|-- CommandButtole :汎化
-CommandButtole <-- Monster
 
-Monster *.. Type :コンポジション
-
-Monster  <|-- FushigidaneMonster : 実現
-Monster  <|-- HitokageMonster : 実現
-Monster  <|-- MizugameMonster : 実現
-
+Monster  <|-- FushigidaneMonster : 汎化
+Monster  <|-- HitokageMonster : 汎化
+Monster  <|-- MizugameMonster : 汎化
 
 Technique  <|.. TechniqueTackle : 実現
 Technique  <|.. techniqueHinoko : 実現
