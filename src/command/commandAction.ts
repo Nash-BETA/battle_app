@@ -1,8 +1,8 @@
 import { commandAbstract } from "./commandAbstract";
 
 export class CommandAction extends commandAbstract  {
-    type: string    = 'list';
-    name: string    = 'action';
-    message: string = 'こうどうは？';
-    choices: { name: string; value: string }[] = [{ name: 'こうげき', value: 'battle' }, { name: 'いれかえる', value: 'change' },{ name: 'にげる', value: 'escape' }];
+    protected type: string    = 'list';
+    protected name: string    = 'action';
+    protected message: string = 'こうどうは？';
+    protected choices: { name: string; value: string }[] = [{ name: 'こうげき', value: 'battle' }, { name: 'いれかえる', value: 'change' },{ name: 'にげる', value: 'escape' }];
 }

@@ -18,28 +18,22 @@ class Player{
 
 Main -- RunCommand
 CommandAbstract -- Main
-Damage -- Main
 ActivePlayer -- Main
 
-Monster --> Damage
-Technique --> Technique
+ActivePlayer "1" o-- "2" ActivePlayer :集約
 
-Player "1" o-- "1..*" Monster
-
-TechniqueList "1" o-- "1..*" Technique
-
-ActivePlayer <|.. Player :依存
-
-Monster <|.. TechniqueList :依存
-Monster <|.. Type :依存
-
-Monster  <|.. FushigidaneMonster : 実現
-Monster  <|.. HitokageMonster : 実現
-Monster  <|.. MizugameMonster : 実現
+Player "1" o-- "1..*" Monster :集約
 
 CommandAbstract <|-- CommandAction :汎化
 CommandAbstract <|-- CommandButtole :汎化
 CommandButtole <-- Monster
+
+Monster *.. Type :コンポジション
+
+Monster  <|-- FushigidaneMonster : 実現
+Monster  <|-- HitokageMonster : 実現
+Monster  <|-- MizugameMonster : 実現
+
 
 Technique  <|.. TechniqueTackle : 実現
 Technique  <|.. techniqueHinoko : 実現

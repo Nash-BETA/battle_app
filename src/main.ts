@@ -1,7 +1,6 @@
 import { ActivePlayer } from './activePlayer';
 import { CommandAction } from './command/commandAction';
 import { CommandButtole } from './command/commandButtole';
-import { Damage } from './damage';
 import { FushigidaneMonster } from './monster/fushigidaneMonster';
 import { HitokageMonster } from './monster/hitokageMonster';
 import { MizugameMonster } from './monster/mizugameMonster';
@@ -22,8 +21,7 @@ export class Main{
     start() {
         let turnPlayer = this.activePlayer.getActivePlayer();
         let nonTurnPlayer = this.activePlayer.getNonActivePlayer();
-        console.log(turnPlayer.getActiveMonster().hitPoint);
-        console.log(nonTurnPlayer.getActiveMonster().hitPoint);
+
         new CommandAction().select().then(value => {
             if (value.action == 'escape'){
                 console.log('プレイヤーとの戦いで逃げることはできない。');
@@ -34,13 +32,12 @@ export class Main{
                 return this.start();
             } else if (value.action == 'battle') {
                 new CommandButtole(turnPlayer.getActiveMonster()).select().then(value => {
-                    let damege_text = new Damage(value.action, nonTurnPlayer.activeMonster);
-                    damege_text.setHitPoint();
-                    console.log(damege_text.getDamageText());
-                    console.log('残りHP' + nonTurnPlayer.activeMonster.hitPoint);
+                    let damageText = nonTurnPlayer.activeMonster.setDamageHitPoint(value.action)
+                    console.log(damageText);
+                    console.log('残りHP' + nonTurnPlayer.activeMonster.getHitPoint());
 
                     //攻撃された側がHP０以下になった場合終了
-                    if (nonTurnPlayer.activeMonster.hitPoint <= 0){
+                    if (nonTurnPlayer.activeMonster.getHitPoint() <= 0){
                         console.log(turnPlayer.playerName + 'の勝利');
                         return;
                     }else{

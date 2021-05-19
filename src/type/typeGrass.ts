@@ -1,12 +1,15 @@
 import { Type } from "./type";
+import { TypeFire } from "./typeFire";
 import { TypeWater } from "./typeWater";
 
 export class TypeGrass implements Type {
 
-    winType(montsterType:Type):boolean{
-        if (montsterType instanceof TypeWater){
-            return true;
+    judgeCompatibility(techniqueType: Type): number {
+        if (techniqueType instanceof TypeWater) {
+            return 2;
+        } else if (techniqueType instanceof TypeFire) {
+            return 0.5;
         }
-        return false
+        return 1;
     }
 }

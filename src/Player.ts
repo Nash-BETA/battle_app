@@ -13,8 +13,22 @@ export class Player {
         this.activeMonster = monster[0];
     }
 
-    getActiveMonster(){
+    getActiveMonster(): Monster{
         return this.activeMonster;
+    }
+
+    getWaitMonster(activeMonster:Monster|null):Monster[]{
+        let waitMonster:Monster;
+        let returnMonsterData:Monster[] = [];
+        for (waitMonster of this.monsterList ){
+            //同じポケモンは入れ替えられない&&ヒットポイントが０より上であること
+            if (activeMonster == waitMonster && activeMonster.getHitPoint() > 0) {
+                continue;
+            }
+            returnMonsterData.push(waitMonster)
+        }
+
+        return this.monsterList
     }
 
     setChangeMonster(id:number):Monster{

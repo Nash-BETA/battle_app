@@ -1,4 +1,4 @@
 
 export interface Type {
-    winType(montsterType: Type):boolean;
+    judgeCompatibility(techniqueType: Type):number;
 }

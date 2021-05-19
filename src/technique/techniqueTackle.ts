@@ -1,6 +1,6 @@
 import { Technique } from "./technique";
 import { Type } from "../type/type";
-import { TypeNomal } from "../type/typeWater copy";
+import { TypeNomal } from "../type/TypeNomal";
 
 
 export class TechniqueTackle implements Technique{

@@ -2,10 +2,10 @@ import { prompt } from 'inquirer';
 import { Technique } from "../technique/technique";
 
 export abstract class commandAbstract  {
-    abstract type: string;
-    abstract name: string;
-    abstract message: string;
-    abstract choices: { name: string; value: string | Technique; }[];
+    protected abstract type: string;
+    protected abstract name: string;
+    protected abstract message: string;
+    protected abstract choices: { name: string; value: string | Technique; }[];
 
     select(): Promise<any> {
         const commandSelect = prompt([

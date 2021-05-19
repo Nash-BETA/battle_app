@@ -3,15 +3,14 @@ import { Technique } from "../technique/technique";
 import { commandAbstract } from "./commandAbstract";
 
 export class CommandButtole extends commandAbstract  {
-    type: string    = 'list';
-    name: string    = 'action';
-    message: string = 'こうげきは？';
-    choices: { name: string; value: string | Technique; }[];
+    protected type: string    = 'list';
+    protected name: string    = 'action';
+    protected message: string = 'こうげきは？';
+    protected choices: { name: string; value: string | Technique; }[];
 
     constructor(monster:Monster){
         super();
-        let monster_technique = monster.technique;
-        let techniqueList = monster_technique.getTechniqueList();
+        let techniqueList = monster.getTechniqueList();
         let technique: Technique;
         let returnData: { name: string; value: Technique }[] = [];
         for (technique of techniqueList) {
