@@ -1,5 +1,6 @@
 import { commandAbstract } from "./commandAbstract";
 
+//行動
 export class CommandAction extends commandAbstract  {
     protected type: string    = 'list';
     protected name: string    = 'action';

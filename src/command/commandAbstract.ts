@@ -2,6 +2,7 @@ import { prompt } from 'inquirer';
 import { Monster } from '../monster/monster';
 import { Technique } from "../technique/technique";
 
+//コマンド
 export abstract class commandAbstract  {
     protected abstract type: string;
     protected abstract name: string;
