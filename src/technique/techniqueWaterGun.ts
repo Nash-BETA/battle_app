@@ -3,7 +3,7 @@ import { Type } from "../type/type";
 import { TypeWater } from "../type/typeWater";
 
 export class TechniqueWaterGun implements Technique{
-    technique_name:string = 'みずでっぽう';
-    type: Type = new TypeWater();
-    power:number = 20;
+    readonly technique_name:string = 'みずでっぽう';
+    readonly type: Type = new TypeWater();
+    readonly power:number = 20;
 }

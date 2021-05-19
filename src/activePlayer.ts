@@ -16,10 +16,12 @@ export class ActivePlayer{
     getActivePlayer(){
         return this.activePlayer;
     }
+
     //ターンでないプレイヤー
     getNonActivePlayer() {
         return this.nonActivePlayer;
     }
+
     //ターンの切替
     setChangeActivePlayer(){
         let nowActivePlayer = this.activePlayer;

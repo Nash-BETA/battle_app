@@ -3,8 +3,7 @@ import { Type } from "../type/type";
 import { TypeFire } from "../type/typeFire";
 
 export class TechniqueHinoko implements Technique{
-
-    technique_name:string = 'ひのこ';
-    type: Type = new TypeFire();
-    power:number = 20;
+    readonly technique_name:string = 'ひのこ';
+    readonly type: Type = new TypeFire();
+    readonly power:number = 20;
 }

@@ -2,10 +2,11 @@ import { Monster } from "../monster/monster";
 import { Technique } from "../technique/technique";
 import { commandAbstract } from "./commandAbstract";
 
+//攻撃のコマンド
 export class CommandButtole extends commandAbstract  {
     protected type: string    = 'list';
     protected name: string    = 'action';
-    protected message: string = 'どのポケモンにする？';
+    protected message: string = 'なにでこうげきする？';
     protected choices: { name: string; value: Technique; }[];
 
     constructor(monster:Monster){

@@ -15,14 +15,17 @@ export class Player {
         this.monsterList = monster;
     }
 
+    //プレイヤーの名前を返す
     getPlayerName(): string {
         return this.playerName;
     }
 
+    //戦闘中のポケモンを返す
     getActiveMonster(): Monster{
         return this.activeMonster;
     }
 
+    //手持ちのポケモンを配列で返す
     getWaitMonster(activeMonster:Monster|null = null):Monster[]{
         let waitMonster:Monster;
         let returnMonsterData:Monster[] = [];
