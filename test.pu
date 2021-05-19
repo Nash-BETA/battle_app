@@ -12,6 +12,7 @@ Monster "1" o-- "1" Type :集約
 
 CommandAbstract <|-- CommandAction :汎化
 CommandAbstract <|-- CommandButtole :汎化
+CommandAbstract <|-- commandPokemonChange :汎化
 
 Monster  <|-- FushigidaneMonster : 汎化
 Monster  <|-- HitokageMonster : 汎化
